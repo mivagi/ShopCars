@@ -1,0 +1,22 @@
+﻿@model Cart
+
+@{
+    ViewData["Title"] = "CartIndex";
+}
+
+<div class="container">
+    <table class="table">
+        <tr><th>Модель</th><th>Цена</th><th>Количество</th><th></th></tr>
+        @foreach (var car in Model.Lines)
+        {
+            <tr>
+                <td>@car.Car.Name</td>
+                <td>@car.Car.Price.ToString("c")</td>
+                <td>@car.Quantity</td>
+                <td><a asp-action="RemoveCart" asp-controller="Cart" asp-route-id="@car.Id" class="btn btn-danger">Удалить</a></td>
+            </tr>
+
+        }
+    </table>
+    <a asp-action="Checkout" asp-controller="Order" class="btn btn-warning">Перейти к оплате</a>
+</div>

@@ -48,6 +48,12 @@ namespace ShopCars
             {
                 endpoints.MapDefaultControllerRoute();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                AppDbContent content = scope.ServiceProvider.GetRequiredService<AppDbContent>();
+                DbObject.Initial(content);
+            }
         }
     }
 }

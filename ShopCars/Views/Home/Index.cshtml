@@ -1,27 +1,22 @@
-﻿@using ShopCars.Data.Models
-@model IEnumerable<Car>
-
+﻿@model IEnumerable<Car>
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-        <div>
-            @foreach (var car in Model)
-            {
+<div class="container">
+    <div class="row">
+        @foreach (var car in Model)
+        {
+            <div class="col-4">
+                <img src="@car.Img1" class="img-thumbnail" />
+                <h3>Модель: @car.Name</h3>
+                <h4>Цена: @car.Price.ToString("c")</h4>
                 <div>
-                    <h3>Модель: @car.Name</h3>
-                    <h4>Цена: @car.Price.ToString("c")</h4>
-                    
+                    <a asp-action="AddItem" asp-controller="Cart" asp-route-id="@car.Id" class="btn btn-warning btn-sm">Добавить в корзину</a>
+                    <a asp-action="OneCar" asp-controller="Home" asp-route-id="@car.Id" class="btn btn-warning btn-sm">Подробности</a>
                 </div>
-            }
-        </div>
-</body>
-</html>
+            </div>
+        }
+    </div>
+</div>
+

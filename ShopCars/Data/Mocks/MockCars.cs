@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCars.Data.Mocks
 {
-    public class MockCars : IAllCars
+    public class MockCars //: IAllCars
     {
         public IEnumerable<Car> Cars
         {
